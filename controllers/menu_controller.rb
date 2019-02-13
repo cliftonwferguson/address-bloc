@@ -15,6 +15,8 @@
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - View Entry Number n"
+     
      print "Enter your selection: "
  
      # #3
@@ -38,9 +40,13 @@
          main_menu
        when 5
          puts "Good-bye!"
-         # #8
+         
          exit(0)
-       # #9
+        when 6
+         system "clear"
+         search_entries
+         main_menu
+         
        else
          system "clear"
          puts "Sorry, that is not a valid input"
@@ -50,11 +56,9 @@
  
    # #10
    def view_all_entries
-      # #14
      address_book.entries.each do |entry|
        system "clear"
        puts entry.to_s
-     # #15
        entry_submenu(entry)
      end
  
@@ -69,10 +73,8 @@
    end
  
    def create_entry
-        # #11
      system "clear"
      puts "New AddressBloc Entry"
-     # #12
      print "Name: "
      name = gets.chomp
      print "Phone number: "
@@ -80,7 +82,6 @@
      print "Email: "
      email = gets.chomp
  
-     # #13
      address_book.add_entry(name, phone, email)
  
      system "clear"
@@ -88,6 +89,9 @@
    end
  
    def search_entries
+     system "clear"
+     
+     
    end
  
    def read_csv
@@ -101,16 +105,15 @@
      puts "e - edit this entry"
      puts "m - return to main menu"
  
-     # #17
      selection = gets.chomp
  
      case selection
-     # #18
+     
        when "n"
-     # #19
+     
        when "d"
        when "e"
-     # #20
+    
        when "m"
          system "clear"
          main_menu
