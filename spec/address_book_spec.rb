@@ -51,12 +51,6 @@ require_relative '../models/address_book'
        expect(book_size).to eq 5
      end
      
-     describe "#import_from_csv" do
-      it "imports the correct number of entries" do
-       book.import_from_csv("entries_2.csv")
-       book_size = book.entries.size
-       expect(book_size).to eq 3
-     end
  
    end
     
@@ -102,6 +96,29 @@ require_relative '../models/address_book'
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
    
-     
-   
- end
+     context "importing from entries_2.csv" do
+      it "imports the correct number of entries" do
+        book.import_from_csv("entries_2.csv")
+        expect(book.entries.size).to eq 3
+       end
+       
+       it "imports the 1st entry" do
+        book.import_from_csv("entries_2.csv")
+        entry_one = book.entries[0]
+        check_entry(entry_one, "Bob","555-555-5415","bob@gmail.com")
+       end
+       
+       it "imports the 2nd entry" do
+        book.import_from_csv("entries_2.csv")
+        entry_two = book.entries[2]
+        check_entry(entry_two, "Mike","555-555-5654","bill@gmail.com")
+       end
+       
+       it "imports the 3rd entry" do
+        book.import_from_csv("entries_2.csv")
+        entry_three = book.entries[1]
+        check_entry(entry_three, "Joe","555-555-5435","joe@gmail.com")
+       end
+       
+     end
+  end
