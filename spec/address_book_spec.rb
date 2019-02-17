@@ -95,6 +95,12 @@ require_relative '../models/address_book'
        entry_five = book.entries[4]
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
+     
+      it "searches AddressBook for a non-existent entry" do
+       book.import_from_csv("entries.csv")
+       entry = book.binary_search("Dan")
+       expect(entry).to be_nil
+      end
    
      context "importing from entries_2.csv" do
       it "imports the correct number of entries" do
@@ -119,6 +125,10 @@ require_relative '../models/address_book'
         entry_three = book.entries[1]
         check_entry(entry_three, "Joe","555-555-5435","joe@gmail.com")
        end
+       
+       describe "#binary_search" do
+    
+     end
        
      end
   end
