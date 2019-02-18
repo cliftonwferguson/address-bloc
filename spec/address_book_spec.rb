@@ -96,11 +96,26 @@ require_relative '../models/address_book'
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
      
+     it "searches AddressBook for Billy" do
+       book.import_from_csv("entries.csv")
+       entry = book.binary_search("Billy")
+       expect(entry).to be_nil
+     end
+     
+     
+     
       it "searches AddressBook for a non-existent entry" do
        book.import_from_csv("entries.csv")
        entry = book.binary_search("Dan")
        expect(entry).to be_nil
       end
+      
+      it "searches AddressBook for Bill" do
+       book.import_from_csv("entries.csv")
+       entry = book.binary_search("Bill")
+       expect(entry).to be_a Entry
+       check_entry(entry, "Bill", "555-555-4854", "bill@blocmail.com")
+     end  
    
      context "importing from entries_2.csv" do
       it "imports the correct number of entries" do
