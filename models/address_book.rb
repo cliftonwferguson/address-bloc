@@ -5,7 +5,7 @@ class AddressBook
     def initialize
      @entries = []
     end
- def add_entry(name, phone_number, email)
+   def add_entry(name, phone_number, email)
      # #9
      index = 0
      entries.each do |entry|
@@ -17,7 +17,7 @@ class AddressBook
      end
      # #11
      entries.insert(index, Entry.new(name, phone_number, email))
-      end
+    end
     def import_from_csv(file_name)
       csv_text = File.read(file_name)
       csv = CSV.parse(csv_text, headers: true, skip_blanks: true)
@@ -26,6 +26,9 @@ class AddressBook
        add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
      end
     end
+    
+        
+    
     def binary_search(name)
       lower = 0
       upper = entries.length - 1
@@ -39,7 +42,7 @@ class AddressBook
        elsif name > mid_name
          lower = mid + 1
        end
-     end
+     end 
        return nil
         
     end
