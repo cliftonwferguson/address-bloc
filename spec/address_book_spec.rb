@@ -64,6 +64,9 @@ require_relative '../models/address_book'
      end
    end
    
+     
+    
+   
     it "imports the 1st entry" do
        book.import_from_csv("entries.csv")
        entry_one = book.entries[0]
@@ -192,12 +195,21 @@ require_relative '../models/address_book'
        check_entry(entry, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
  
+      context "#nuke" do 
+       it "should delete all entries" do
+        book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+        book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+        book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+        
+        book.nuke
+        expect(book.entries.size).to eq 0
+       end 
    
    
      context "importing from entries_2.csv" do
       it "imports the correct number of entries" do
         book.import_from_csv("entries_2.csv")
-        expect(book.entries.size).to eq 3
+        expect(book.entries.size).to eq 3 
        end
        
        it "imports the 1st entry" do
@@ -223,4 +235,5 @@ require_relative '../models/address_book'
      end
        
      end
+   end
   end
