@@ -32,10 +32,10 @@ class AddressBook
          if entry.name == name 
            return entry
        
-        end 
-      end
+          end 
+    end
         return nil
-      end
+    end
     
     def binary_search(name)
       lower = 0
@@ -65,5 +65,5 @@ class AddressBook
          index += 1 
         end
         
+       end
      end
- end
